@@ -37,5 +37,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation("top.yukonga.miuix.kmp:miuix-ui:<version>")
     implementation(libs.androidx.constraintlayout)
 }
