@@ -39,4 +39,10 @@ dependencies {
     implementation(libs.material)
     implementation("top.yukonga.miuix.kmp:miuix-ui:0.9.3")
     implementation(libs.androidx.constraintlayout)
+    implementation("top.yukonga.miuix.kmp:miuix-ui:0.9.3")
+    implementation("top.yukonga.miuix.kmp:miuix-preference:0.9.3")
+    implementation("top.yukonga.miuix.kmp:miuix-icons:0.9.3")
+    implementation("top.yukonga.miuix.kmp:miuix-blur:0.9.3")
+    implementation("top.yukonga.miuix.kmp:miuix-squircle:0.9.3")
+    implementation("top.yukonga.miuix.kmp:miuix-nav:0.9.3")
 }
