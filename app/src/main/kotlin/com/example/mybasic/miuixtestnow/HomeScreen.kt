@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
-import top.yukonga.miuix.kmp.icons.MiuixIcons
-import top.yukonga.miuix.kmp.icons.filled.CheckCircle
-import top.yukonga.miuix.kmp.icons.filled.Refresh
+import top.yukonga.miuix.kmp.icon.MiuixIcons
+import top.yukonga.miuix.kmp.icon.icons.CheckCircle
+import top.yukonga.miuix.kmp.icon.icons.Refresh
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 
 @Composable
@@ -30,14 +30,14 @@ fun HomeScreen() {
                 modifier = Modifier.padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(MiuixIcons.CheckCircle, tint = MiuixTheme.colors.primary)
+                Icon(MiuixIcons.CheckCircle, tint = MiuixTheme.colorScheme.primary)
                 Spacer(Modifier.width(12.dp))
                 Column {
                     Text("工作正常", style = MiuixTheme.textStyles.title2)
                     Text(
                         "版本：v1.0.0",
                         style = MiuixTheme.textStyles.body2,
-                        color = MiuixTheme.colors.onSurfaceVariant
+                        color = MiuixTheme.colorScheme.onSurfaceVariantSummary
                     )
                 }
             }
@@ -73,7 +73,7 @@ fun InfoRow(label: String, value: String) {
         Text(
             value,
             style = MiuixTheme.textStyles.body2,
-            color = MiuixTheme.colors.onSurfaceVariant
+            color = MiuixTheme.colorScheme.onSurfaceVariantSummary
         )
     }
 }
