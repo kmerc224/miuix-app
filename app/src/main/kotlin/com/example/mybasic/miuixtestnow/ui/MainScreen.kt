@@ -10,10 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,10 +19,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.Scaffold
 import top.yukonga.miuix.kmp.basic.Switch
 import top.yukonga.miuix.kmp.basic.Text
 import top.yukonga.miuix.kmp.basic.TopAppBar
+import top.yukonga.miuix.kmp.icon.MiuixIcons
 
 @Composable
 fun MainScreen() {
@@ -57,32 +55,32 @@ fun MainScreen() {
                 Column(
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    Text(
-                        text = "欢迎使用 Miuix",
-                        // fontSize 等样式参数请根据实际 API 调整
-                    )
+                    Text(text = "欢迎使用 Miuix")
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "这是一个基于 Compose Multiplatform 的 HyperOS 风格 UI 库测试项目。"
-                    )
+                    Text(text = "这是一个基于 Compose Multiplatform 的 HyperOS 风格 UI 库测试项目。")
                 }
             }
 
             // ====== 基础组件列表 ======
             Text(text = "基础组件")
 
+            // 只带标题 + 起始图标
             BasicComponent(
                 title = "设置项 1",
                 summary = "这是一个基础组件示例",
-                icon = {
-                    // 图标槽位
+                startAction = {
+                    Icon(
+                        imageVector = MiuixIcons.Basic.Info,
+                        contentDescription = null
+                    )
                 }
             )
 
+            // 带开关（endActions 接收 RowScope 接收者）
             BasicComponent(
                 title = "设置项 2",
                 summary = "带有开关的组件",
-                action = {
+                endActions = {
                     Switch(
                         checked = switchState,
                         onCheckedChange = { switchState = it }
@@ -93,7 +91,7 @@ fun MainScreen() {
             BasicComponent(
                 title = "设置项 3",
                 summary = "默认开启的开关",
-                action = {
+                endActions = {
                     Switch(
                         checked = switchState2,
                         onCheckedChange = { switchState2 = it }
