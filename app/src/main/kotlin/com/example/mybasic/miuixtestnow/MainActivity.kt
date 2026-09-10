@@ -3,17 +3,20 @@ package com.example.mybasic.miuixtestnow
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import com.example.mybasic.miuixtestnow.theme.MiuixTestAppTheme
-import com.example.mybasic.miuixtestnow.ui.MainScreen
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            MiuixTestAppTheme {
-                MainScreen()
+            var themeState by rememberSaveable { mutableStateOf(ThemeState()) }
+
+            AppTheme(themeState = themeState) {
+                MainScreen(
+                    themeState = themeState,
+                    onThemeChange = { themeState = it }
+                )
             }
         }
     }
