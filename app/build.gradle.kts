@@ -65,6 +65,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation("com.google.android.material:material:1.12.0")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     val miuixVersion = "0.9.3"
