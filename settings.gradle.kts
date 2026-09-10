@@ -12,13 +12,14 @@ pluginManagement {
     }
 }
 
-dependencyResolution {
+// ✅ 改这里：dependencyResolution → dependencyResolutionManagement
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
 }
 
-rootProject.name = "MIUIxTestNow"
-
+rootProject.name = "MiuixTestNow"
 include(":app")
