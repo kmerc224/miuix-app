@@ -12,8 +12,6 @@ import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.icon.MiuixIcons
-import top.yukonga.miuix.kmp.icon.icons.CheckCircle
-import top.yukonga.miuix.kmp.icon.icons.Refresh
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 
 @Composable
@@ -30,7 +28,7 @@ fun HomeScreen() {
                 modifier = Modifier.padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(MiuixIcons.CheckCircle, tint = MiuixTheme.colorScheme.primary)
+                Icon(MiuixIcons.Check, tint = MiuixTheme.colorScheme.primary)
                 Spacer(Modifier.width(12.dp))
                 Column {
                     Text("工作正常", style = MiuixTheme.textStyles.title2)
@@ -53,7 +51,7 @@ fun HomeScreen() {
 
         Card(onClick = { /* 刷新 */ }, modifier = Modifier.fillMaxWidth()) {
             Row(Modifier.padding(16.dp)) {
-                Icon(MiuixIcons.Refresh)
+                Icon(MiuixIcons.More)
                 Spacer(Modifier.width(12.dp))
                 Text("检查更新")
             }
