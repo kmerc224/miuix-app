@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.BasicComponent
 import top.yukonga.miuix.kmp.basic.Card
-import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.Scaffold
 import top.yukonga.miuix.kmp.basic.Switch
 import top.yukonga.miuix.kmp.basic.Text
@@ -72,7 +71,7 @@ fun MainScreen() {
                 summary = "这是一个基础组件示例",
                 startAction = {
                     Icon(
-                        imageVector = MiuixIcons.Settings,
+                        imageVector = MiuixIcons.Settings,   // 默认 Regular 字重
                         contentDescription = null
                     )
                 }
