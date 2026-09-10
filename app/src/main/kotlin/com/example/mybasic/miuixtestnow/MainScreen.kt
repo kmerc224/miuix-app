@@ -8,12 +8,13 @@ import androidx.compose.ui.Modifier
 import top.yukonga.miuix.kmp.basic.NavigationBar
 import top.yukonga.miuix.kmp.basic.NavigationBarItem
 import top.yukonga.miuix.kmp.basic.Scaffold
+import top.yukonga.miuix.kmp.basic.Text
 import top.yukonga.miuix.kmp.basic.TopAppBar
-import top.yukonga.miuix.kmp.icons.MiuixIcons
-import top.yukonga.miuix.kmp.icons.filled.Account
-import top.yukonga.miuix.kmp.icons.filled.Extensions
-import top.yukonga.miuix.kmp.icons.filled.Home
-import top.yukonga.miuix.kmp.icons.filled.Settings
+import top.yukonga.miuix.kmp.icon.MiuixIcons
+import top.yukonga.miuix.kmp.icon.icons.Account
+import top.yukonga.miuix.kmp.icon.icons.Extensions
+import top.yukonga.miuix.kmp.icon.icons.Home
+import top.yukonga.miuix.kmp.icon.icons.Settings
 
 @Composable
 fun MainScreen(
@@ -30,15 +31,20 @@ fun MainScreen(
     )
 
     Scaffold(
-        topBar = { TopAppBar(title = tabs[selectedIndex]) },
+        topBar = {
+            TopAppBar(title = { Text(tabs[selectedIndex]) })
+        },
         bottomBar = {
-            NavigationBar(
-                items = tabs.zip(icons).map { (label, icon) ->
-                    NavigationBarItem(icon = icon, label = label)
-                },
-                selectedIndex = selectedIndex,
-                onSelectedIndexChange = { selectedIndex = it }
-            )
+            NavigationBar {
+                tabs.forEachIndexed { index, label ->
+                    NavigationBarItem(
+                        selected = selectedIndex == index,
+                        onClick = { selectedIndex = index },
+                        icon = icons[index],
+                        label = label
+                    )
+                }
+            }
         }
     ) { padding ->
         Box(Modifier.padding(padding)) {
