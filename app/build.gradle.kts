@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
+    // 删除：id("org.jetbrains.kotlin.android")  ← AGP 9 内置 Kotlin，重复注册会报错
+    id("org.jetbrains.kotlin.plugin.compose")  // Compose 编译器插件仍需保留
 }
 
 android {
@@ -31,9 +31,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+    // kotlinOptions 在 AGP 9 中已废弃，改用顶层 kotlin { } 块
+    // （见下方 android 块之外）
 
     buildFeatures {
         compose = true
@@ -46,8 +45,14 @@ android {
     }
 }
 
+// 新增：替代原来的 kotlinOptions
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
+}
+
 dependencies {
-    // Compose BOM - 统一管理 Compose 版本
     val composeBom = platform("androidx.compose:compose-bom:2024.09.00")
     implementation(composeBom)
 
@@ -62,7 +67,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    // ====== Miuix 依赖（请核实最新版本号） ======
     val miuixVersion = "0.9.3"
     implementation("top.yukonga.miuix.kmp:miuix-ui:$miuixVersion")
     implementation("top.yukonga.miuix.kmp:miuix-preference:$miuixVersion")
