@@ -6,61 +6,67 @@ plugins {
 
 android {
     namespace = "com.example.mybasic.miuixtestnow"
-    compileSdk = 37
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.mybasic.miuixtestnow"
-        minSdk = 27
-        targetSdk = 34
+        minSdk = 26
+        targetSdk = 35
         versionCode = 1
-        versionName = "1.0"
-
+        versionName = "1.0.0"
     }
 
-    buildFeatures {
-        compose = true
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget("17"))
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
 
 dependencies {
-    // Compose BOM
-    val composeBom = platform("androidx.compose:compose-bom:2024.12.01")
+    // Compose BOM - 统一管理 Compose 版本
+    val composeBom = platform("androidx.compose:compose-bom:2024.09.00")
     implementation(composeBom)
 
-    // Compose UI
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.activity:activity-compose:1.9.2")
+    implementation("androidx.core:core-ktx:1.13.1")
 
-    // Activity Compose
-    implementation("androidx.activity:activity-compose:1.9.3")
-
-    // MIUIX 0.9.3
-    implementation("top.yukonga.miuix.kmp:miuix-ui:0.9.3")
-    implementation("top.yukonga.miuix.kmp:miuix-preference:0.9.3")
-
-    // DataStore
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
-
-    // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-
-    // Core
-    implementation("androidx.core:core-ktx:1.15.0")
-
-    // Debug
     debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // ====== Miuix 依赖（请核实最新版本号） ======
+    val miuixVersion = "0.9.3"
+    implementation("top.yukonga.miuix.kmp:miuix-ui:$miuixVersion")
+    implementation("top.yukonga.miuix.kmp:miuix-preference:$miuixVersion")
+    implementation("top.yukonga.miuix.kmp:miuix-icons:$miuixVersion")
+    implementation("top.yukonga.miuix.kmp:miuix-blur:$miuixVersion")
+    implementation("top.yukonga.miuix.kmp:miuix-squircle:$miuixVersion")
 }
