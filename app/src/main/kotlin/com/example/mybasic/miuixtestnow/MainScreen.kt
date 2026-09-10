@@ -11,9 +11,6 @@ import top.yukonga.miuix.kmp.basic.Scaffold
 import top.yukonga.miuix.kmp.basic.Text
 import top.yukonga.miuix.kmp.basic.TopAppBar
 import top.yukonga.miuix.kmp.icon.MiuixIcons
-import top.yukonga.miuix.kmp.icon.icons.Account
-import top.yukonga.miuix.kmp.icon.icons.Extensions
-import top.yukonga.miuix.kmp.icon.icons.Home
 import top.yukonga.miuix.kmp.icon.icons.Settings
 
 @Composable
@@ -24,9 +21,9 @@ fun MainScreen(
     var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
     val tabs = listOf("首页", "超级用户", "模块", "设置")
     val icons = listOf(
-        MiuixIcons.Home,
-        MiuixIcons.Account,
-        MiuixIcons.Extensions,
+        MiuixIcons.VerticalSplit,
+        MiuixIcons.Contacts,
+        MiuixIcons.More,
         MiuixIcons.Settings
     )
 
