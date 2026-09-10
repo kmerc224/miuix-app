@@ -33,15 +33,34 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation("top.yukonga.miuix.kmp:miuix-ui:0.9.3")
-    implementation(libs.androidx.constraintlayout)
+    // Compose BOM
+    val composeBom = platform("androidx.compose:compose-bom:2024.12.01")
+    implementation(composeBom)
+
+    // Compose UI
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material-icons-extended")
+
+    // Activity Compose
+    implementation("androidx.activity:activity-compose:1.9.3")
+
+    // MIUIX 0.9.3
     implementation("top.yukonga.miuix.kmp:miuix-ui:0.9.3")
     implementation("top.yukonga.miuix.kmp:miuix-preference:0.9.3")
-    implementation("top.yukonga.miuix.kmp:miuix-icons:0.9.3")
-    implementation("top.yukonga.miuix.kmp:miuix-blur:0.9.3")
-    implementation("top.yukonga.miuix.kmp:miuix-squircle:0.9.3")
-    implementation("top.yukonga.miuix.kmp:miuix-nav:0.9.3")
+
+    // DataStore
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+
+    // Core
+    implementation("androidx.core:core-ktx:1.15.0")
+
+    // Debug
+    debugImplementation("androidx.compose.ui:ui-tooling")
 }
