@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.CardDefaults
 import top.yukonga.miuix.kmp.basic.TextField
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 
@@ -29,7 +30,8 @@ fun SuperUserScreen() {
         TextField(
             value = searchText,
             onValueChange = { searchText = it },
-            placeholder = "搜索应用...",
+            label = "搜索应用...",
+            useLabelAsPlaceholder = true,
             modifier = Modifier.fillMaxWidth().padding(16.dp)
         )
 
@@ -55,7 +57,7 @@ fun AppListItem(app: AppEntry) {
         ) {
             Box(
                 Modifier.size(44.dp)
-                    .background(MiuixTheme.colors.surfaceVariant, RoundedCornerShape(12.dp))
+                    .background(MiuixTheme.colorScheme.surfaceVariant, RoundedCornerShape(12.dp))
             )
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
@@ -63,7 +65,7 @@ fun AppListItem(app: AppEntry) {
                 Text(
                     app.packageName,
                     style = MiuixTheme.textStyles.footnote1,
-                    color = MiuixTheme.colors.onSurfaceVariant
+                    color = MiuixTheme.colorScheme.onSurfaceVariantSummary
                 )
             }
             app.tags.forEach { tag ->
@@ -77,16 +79,16 @@ fun AppListItem(app: AppEntry) {
 fun StatusChip(tag: String) {
     Card(
         modifier = Modifier.padding(start = 4.dp),
-        colors = top.yukonga.miuix.kmp.theme.CardColors(
-            color = if (tag == "ROOT") MiuixTheme.colors.primaryContainer
-            else MiuixTheme.colors.secondaryContainer
+        colors = CardDefaults.defaultColors(
+            color = if (tag == "ROOT") MiuixTheme.colorScheme.primaryContainer
+            else MiuixTheme.colorScheme.secondaryContainer
         )
     ) {
         Text(
             tag,
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
             style = MiuixTheme.textStyles.footnote1,
-            color = MiuixTheme.colors.onPrimaryContainer
+            color = MiuixTheme.colorScheme.onPrimaryContainer
         )
     }
 }
