@@ -70,7 +70,7 @@ fun MainScreen() {
                 summary = "这是一个基础组件示例",
                 startAction = {
                     Icon(
-                        imageVector = MiuixIcons.Basic.Info,
+                        imageVector = MiuixIcons.Settings,
                         contentDescription = null
                     )
                 }
