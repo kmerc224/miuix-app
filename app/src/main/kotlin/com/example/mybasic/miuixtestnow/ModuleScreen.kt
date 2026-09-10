@@ -38,7 +38,7 @@ fun ModuleScreen() {
                         Text(
                             "${module.version} · ${module.author}",
                             style = MiuixTheme.textStyles.footnote1,
-                            color = MiuixTheme.colors.onSurfaceVariant
+                            color = MiuixTheme.colorScheme.onSurfaceVariantSummary
                         )
                     }
                     Switch(
