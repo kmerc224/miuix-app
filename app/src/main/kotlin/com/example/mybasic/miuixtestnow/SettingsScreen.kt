@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.Card
+import top.yukonga.miuix.kmp.basic.SmallTitle
 import top.yukonga.miuix.kmp.preference.SwitchPreference
-import top.yukonga.miuix.kmp.preference.SmallTitle
 
 @Composable
 fun SettingsScreen(
@@ -20,7 +20,7 @@ fun SettingsScreen(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            SmallTitle("外观")
+            SmallTitle(text = "外观")
             Card(modifier = Modifier.fillMaxWidth()) {
                 Column {
                     SwitchPreference(
@@ -46,7 +46,7 @@ fun SettingsScreen(
         }
 
         item {
-            SmallTitle("关于")
+            SmallTitle(text = "关于")
             Card(modifier = Modifier.fillMaxWidth()) {
                 Column {
                     InfoRow("版本", "1.0.0")
