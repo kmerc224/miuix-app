@@ -1,46 +1,46 @@
 package com.example.mybasic.miuixtestnow
 
-import App
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.miuixthemedemo.data.ThemePreferences
+import com.example.miuixthemedemo.data.ThemePreferencesRepository
+import com.example.miuixthemedemo.ui.screens.MainScreen
+import com.example.miuixthemedemo.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var themePreferences: ThemePreferencesRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
+        themePreferences = ThemePreferencesRepository(applicationContext)
 
         setContent {
-            var colorMode by remember { mutableIntStateOf(0) }
-            val darkMode = when (colorMode) {
-                2, 5 -> true
-                0, 3 -> isSystemInDarkTheme()
-                else -> false
-            }
+            val themeMode by themePreferences.themeMode.collectAsStateWithLifecycle(
+                initialValue = ThemePreferences.ThemeMode.SYSTEM
+            )
+            val darkMode by themePreferences.darkMode.collectAsStateWithLifecycle(
+                initialValue = ThemePreferences.DarkMode.FOLLOW_SYSTEM
+            )
 
-            DisposableEffect(darkMode) {
-                enableEdgeToEdge(
-                    statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT) { darkMode },
-                    navigationBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT) { darkMode },
+            AppTheme(
+                themeMode = themeMode,
+                darkMode = darkMode
+            ) {
+                MainScreen(
+                    themeMode = themeMode,
+                    darkMode = darkMode,
+                    onThemeModeChanged = { themePreferences.setThemeMode(it) },
+                    onDarkModeChanged = { themePreferences.setDarkMode(it) }
                 )
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    window.isNavigationBarContrastEnforced = false // Xiaomi moment, this code must be here
-                }
-
-                onDispose {}
             }
-
-            App(onColorModeChange = { colorMode = it })
         }
     }
 }
