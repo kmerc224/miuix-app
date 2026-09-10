@@ -1,25 +1,18 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
 }
 
-// ✅ 改这里：dependencyResolution → dependencyResolutionManagement
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        mavenCentral()
+        mavenCentral() // Miuix 发布在 Maven Central
     }
 }
 
-rootProject.name = "MiuixTestNow"
+rootProject.name = "MyMiuixApp"
 include(":app")
