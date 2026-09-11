@@ -12,8 +12,6 @@ import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.icon.MiuixIcons
-import top.yukonga.miuix.kmp.icon.icons.Check
-import top.yukonga.miuix.kmp.icon.icons.More
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 
 @Composable
@@ -53,7 +51,7 @@ fun HomeScreen() {
 
         Card(onClick = { /* 刷新 */ }, modifier = Modifier.fillMaxWidth()) {
             Row(Modifier.padding(16.dp)) {
-                Icon(MiuixIcons.More)
+                Icon(MiuixIcons.ArrowRight)
                 Spacer(Modifier.width(12.dp))
                 Text("检查更新")
             }
