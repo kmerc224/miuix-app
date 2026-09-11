@@ -8,13 +8,11 @@ import androidx.compose.ui.Modifier
 import top.yukonga.miuix.kmp.basic.NavigationBar
 import top.yukonga.miuix.kmp.basic.NavigationBarItem
 import top.yukonga.miuix.kmp.basic.Scaffold
-import top.yukonga.miuix.kmp.basic.Text
 import top.yukonga.miuix.kmp.basic.TopAppBar
 import top.yukonga.miuix.kmp.icon.MiuixIcons
 import top.yukonga.miuix.kmp.icon.icons.VerticalSplit
 import top.yukonga.miuix.kmp.icon.icons.Contacts
 import top.yukonga.miuix.kmp.icon.icons.Settings
-import top.yukonga.miuix.kmp.icon.icons.More
 
 @Composable
 fun MainScreen(
@@ -26,7 +24,7 @@ fun MainScreen(
     val icons = listOf(
         MiuixIcons.VerticalSplit,
         MiuixIcons.Contacts,
-        MiuixIcons.More,
+        MiuixIcons.Settings,
         MiuixIcons.Settings
     )
 
