@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.icon.MiuixIcons
-// 从 icons 包导入基础图标
+// 基础图标从 icons 包导入
 import top.yukonga.miuix.kmp.icon.icons.ArrowRight
 import top.yukonga.miuix.kmp.icon.icons.Check
 import top.yukonga.miuix.kmp.theme.MiuixTheme
