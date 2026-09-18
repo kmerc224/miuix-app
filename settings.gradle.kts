@@ -1,4 +1,8 @@
+@file:Suppress("UnstableApiUsage")
+
 rootProject.name = "miuix-demo"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     repositories {
